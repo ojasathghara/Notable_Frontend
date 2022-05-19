@@ -17,7 +17,7 @@ function Navigation(props) {
                         <Nav.Link as={Link} to="/">
                             Home
                         </Nav.Link>
-                        <Nav.Link eventKey={2} as={Link} to="/">
+                        <Nav.Link eventKey={2} as={Link} to="/about">
                             About
                         </Nav.Link>
                     </Nav>
@@ -35,6 +35,6 @@ function Navigation(props) {
     );
 }
 
-Navbar.propTypes = {};
+Navigation.propTypes = {};
 
 export default Navigation;
