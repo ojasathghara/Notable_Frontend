@@ -10,8 +10,20 @@ function NoteItem(props) {
                 <p className="card-text">{props.note.description}</p>
                 <hr />
                 <div className="d-flex justify-content-between">
-                    <i class="fa-regular fa-pen-to-square"> Edit</i>
-                    <i class="fa-regular fa-trash-can"> Delete</i>
+                    <i
+                        className="fa-regular fa-pen-to-square"
+                        onClick={() => props.onEdit(props.note)}
+                    >
+                        {" "}
+                        Edit
+                    </i>
+                    <i
+                        className="fa-regular fa-trash-can"
+                        onClick={() => props.onDelete(props.note._id)}
+                    >
+                        {" "}
+                        Delete
+                    </i>
                 </div>
             </div>
         </div>
@@ -20,6 +32,8 @@ function NoteItem(props) {
 
 NoteItem.propTypes = {
     note: PropTypes.object,
+    onEdit: PropTypes.func,
+    onDelete: PropTypes.func,
 };
 
 export default NoteItem;
