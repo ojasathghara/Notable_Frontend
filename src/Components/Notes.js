@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import NoteContext from "../Context/Notes/NoteContext";
 import NoteItem from "./NoteItem";
 
-let notes = [{ _id: 1 }, { _id: 2 }];
-
 export default function Notes() {
+    const { notes, setNotes } = useContext(NoteContext);
     return (
         <div className="my-5">
             <h3>My Notes</h3>
@@ -14,7 +14,7 @@ export default function Notes() {
                         return (
                             // have to give unique key to each item
                             <div className="col-md-4" key={note._id}>
-                                <NoteItem />
+                                <NoteItem note={note} />
                             </div>
                         );
                     })
