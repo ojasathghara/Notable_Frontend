@@ -23,7 +23,7 @@ let notesInit = [
     },
 ];
 
-export default function Notes() {
+export default function Notes({ tags }) {
     const [notes, setNotes] = useState(notesInit);
     const [currentNote, setCurrentNote] = useState({});
     const [modalShow, setModalShow] = useState(false);
@@ -47,6 +47,7 @@ export default function Notes() {
                 id={currentNote._id}
                 show={modalShow}
                 note={currentNote}
+                tags={tags}
                 onShow={handleModalShow}
                 onHide={handleModalClose}
                 onClose={handleModalClose}

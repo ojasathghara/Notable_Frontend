@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Form } from "react-bootstrap";
 import PropTypes from "prop-types";
 
 function UpdateNote(props) {
     let oldTitle = "";
     let oldDescription = "";
+    let oldTag = props.note.tag;
 
     if (props.note != null) {
         oldTitle = props.note.title;
@@ -13,6 +14,7 @@ function UpdateNote(props) {
 
     const [newTitle, setNewTitle] = useState(oldTitle);
     const [newDescription, setNewDescription] = useState(oldDescription);
+    const [tag, setTag] = useState(oldTag);
 
     const onTitleChange = (e) => {
         setNewTitle(e.target.value);
@@ -20,6 +22,10 @@ function UpdateNote(props) {
 
     const onDescriptionChange = (e) => {
         setNewDescription(e.target.value);
+    };
+
+    const onTagChange = (newTag) => {
+        setTag(newTag);
     };
 
     return (
@@ -33,8 +39,8 @@ function UpdateNote(props) {
                     <Modal.Title>Update Task</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <form>
-                        <div className="form-group">
+                    <Form>
+                        <Form.Group>
                             <label htmlFor="noteTitleUpdate">New Title</label>
                             <input
                                 type="text"
@@ -44,9 +50,9 @@ function UpdateNote(props) {
                                 value={newTitle}
                                 onChange={onTitleChange}
                             />
-                        </div>
+                        </Form.Group>
                         <br />
-                        <div className="form-group">
+                        <Form.Group>
                             <label htmlFor="noteDescriptionUpdate">
                                 New Description
                             </label>
@@ -59,8 +65,26 @@ function UpdateNote(props) {
                                 value={newDescription}
                                 onChange={onDescriptionChange}
                             ></textarea>
-                        </div>
-                    </form>
+                        </Form.Group>
+                        <Form.Group>
+                            Edit tag: &nbsp;
+                            {props.tags.map((tag) => {
+                                return (
+                                    <Form.Check
+                                        inline
+                                        key={tag.color}
+                                        type="radio"
+                                        name="tag"
+                                        value={
+                                            tag.name === oldTag ? "on" : "off"
+                                        }
+                                        label={tag.name}
+                                        onChange={() => onTagChange(tag.name)}
+                                    />
+                                );
+                            })}
+                        </Form.Group>
+                    </Form>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={props.onClose}>
@@ -83,6 +107,7 @@ function UpdateNote(props) {
 
 UpdateNote.propTypes = {
     show: PropTypes.bool,
+    tags: PropTypes.array,
     onHide: PropTypes.func,
     onClose: PropTypes.func,
     onSubmit: PropTypes.func,
