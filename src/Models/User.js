@@ -6,4 +6,4 @@ class User {
     }
 }
 
-module.exports = { USer };
+export default User;

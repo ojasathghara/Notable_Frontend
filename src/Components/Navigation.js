@@ -1,8 +1,6 @@
 import React from "react";
-import { Navbar, NavDropdown, Nav, Container } from "react-bootstrap"; // user as={Link} when for rendering react-bootstrap items as react router dom items.
+import { Navbar, Nav, Container } from "react-bootstrap"; // user as={Link} when for rendering react-bootstrap items as react router dom items.
 import { Link } from "react-router-dom";
-
-import PropTypes from "prop-types";
 
 function Navigation(props) {
     return (
@@ -14,7 +12,7 @@ function Navigation(props) {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link as={Link} to="/">
+                        <Nav.Link eventKey={1} as={Link} to="/">
                             Home
                         </Nav.Link>
                         <Nav.Link eventKey={2} as={Link} to="/about">
@@ -25,7 +23,7 @@ function Navigation(props) {
                         <Nav.Link as={Link} to="/">
                             Login
                         </Nav.Link>
-                        <Nav.Link eventKey={2} as={Link} to="/">
+                        <Nav.Link as={Link} to="/">
                             Signup
                         </Nav.Link>
                     </Nav>
@@ -34,7 +32,5 @@ function Navigation(props) {
         </Navbar>
     );
 }
-
-Navigation.propTypes = {};
 
 export default Navigation;

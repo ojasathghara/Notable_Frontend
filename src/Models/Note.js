@@ -1,6 +1,6 @@
 class Note {
     constructor(title, description, tag, id = "", userId = "") {
-        this.userId = user;
+        this.userId = userId;
         this.id = id;
         this.title = title;
         this.description = description;
@@ -8,4 +8,4 @@ class Note {
     }
 }
 
-module.exports = { Note };
+export default Note;
