@@ -14,7 +14,7 @@ function UpdateNote(props) {
 
     const [newTitle, setNewTitle] = useState(oldTitle);
     const [newDescription, setNewDescription] = useState(oldDescription);
-    const [tag, setTag] = useState(oldTag);
+    const [newTag, setNewTag] = useState(oldTag);
 
     const onTitleChange = (e) => {
         setNewTitle(e.target.value);
@@ -24,8 +24,8 @@ function UpdateNote(props) {
         setNewDescription(e.target.value);
     };
 
-    const onTagChange = (newTag) => {
-        setTag(newTag);
+    const onTagChange = (updatedTag) => {
+        setNewTag(updatedTag);
     };
 
     return (
