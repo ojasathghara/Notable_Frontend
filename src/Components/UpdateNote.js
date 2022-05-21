@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import PropTypes from "prop-types";
+import NoteContext from "../Context/Notes/NoteContext";
 
 function UpdateNote(props) {
     let oldTitle = "";
@@ -16,6 +17,8 @@ function UpdateNote(props) {
     const [newDescription, setNewDescription] = useState(oldDescription);
     const [newTag, setNewTag] = useState(oldTag);
 
+    const { updateNote } = useContext(NoteContext);
+
     const onTitleChange = (e) => {
         setNewTitle(e.target.value);
     };
@@ -26,6 +29,11 @@ function UpdateNote(props) {
 
     const onTagChange = (updatedTag) => {
         setNewTag(updatedTag);
+    };
+
+    const editNote = () => {
+        updateNote(props.note._id, newTitle, newDescription, newTag);
+        props.onHide();
     };
 
     return (
@@ -75,8 +83,8 @@ function UpdateNote(props) {
                                         key={tag.color}
                                         type="radio"
                                         name="tag"
-                                        value={
-                                            tag.name === oldTag ? "on" : "off"
+                                        defaultChecked={
+                                            tag.name === oldTag ? true : false
                                         }
                                         label={tag.name}
                                         onChange={() => onTagChange(tag.name)}
@@ -90,13 +98,7 @@ function UpdateNote(props) {
                     <Button variant="secondary" onClick={props.onClose}>
                         Cancel
                     </Button>
-                    <Button
-                        variant="primary"
-                        onClick={() =>
-                            //key can't be used as a prop so using id instead
-                            props.onSubmit(props.id, newTitle, newDescription)
-                        }
-                    >
+                    <Button variant="primary" onClick={editNote}>
                         Update
                     </Button>
                 </Modal.Footer>
@@ -110,7 +112,6 @@ UpdateNote.propTypes = {
     tags: PropTypes.array,
     onHide: PropTypes.func,
     onClose: PropTypes.func,
-    onSubmit: PropTypes.func,
 };
 
 export default UpdateNote;

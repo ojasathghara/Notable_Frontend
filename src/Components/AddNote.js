@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import PropTypes from "prop-types";
+import NoteContext from "../Context/Notes/NoteContext";
 
 export default function AddNote({ tags }) {
     const [title, setTitle] = useState("");
@@ -21,14 +22,16 @@ export default function AddNote({ tags }) {
         setTag(newTag);
     };
 
-    const addNote = (e) => {
-        e.preventDefault();
+    const noteContext = useContext(NoteContext);
+    const { addNote } = noteContext;
+    const createNote = () => {
+        const note = {
+            title: title,
+            description: description,
+            tag: tag,
+        };
 
-        if (!title || !description) {
-            alert("Title or description must not be empty.");
-            return;
-        }
-
+        addNote(note);
         setTitle("");
         setDescription("");
     };
@@ -84,7 +87,7 @@ export default function AddNote({ tags }) {
                 </Form.Group>
                 <br />
                 <Form.Group>
-                    <Button variant="primary" type="submit" onClick={addNote}>
+                    <Button variant="primary" onClick={createNote}>
                         + Add
                     </Button>
                 </Form.Group>

@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import NoteContext from "../Context/Notes/NoteContext";
 
 function NoteItem(props) {
+    const noteContext = useContext(NoteContext);
+    const { deleteNote } = noteContext;
+
     return (
         <div className="card my-2">
             <div className="card-body">
@@ -19,7 +23,7 @@ function NoteItem(props) {
                     </i>
                     <i
                         className="fa-regular fa-trash-can"
-                        onClick={() => props.onDelete(props.note._id)}
+                        onClick={() => deleteNote(props.note._id)}
                     >
                         {" "}
                         Delete
