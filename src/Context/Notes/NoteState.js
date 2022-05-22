@@ -13,7 +13,7 @@ const NoteState = (props) => {
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
-                "auth-token":
+                auth_token:
                     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI4NDVmOWNkODQzMjRkNGZhYTA2MWZhIn0sImlhdCI6MTY1Mjg0MjcyMn0.ZqG0Y8zJQSE5SNnNcENL9v0XQzRFz0d23dmtXIM7evQ",
             },
         });
@@ -27,7 +27,7 @@ const NoteState = (props) => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "auth-token":
+                auth_token:
                     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI4NDVmOWNkODQzMjRkNGZhYTA2MWZhIn0sImlhdCI6MTY1Mjg0MjcyMn0.ZqG0Y8zJQSE5SNnNcENL9v0XQzRFz0d23dmtXIM7evQ",
             },
             body: JSON.stringify(note), // body data type must match "Content-Type" header
@@ -49,7 +49,7 @@ const NoteState = (props) => {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
-                "auth-token":
+                auth_token:
                     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI4NDVmOWNkODQzMjRkNGZhYTA2MWZhIn0sImlhdCI6MTY1Mjg0MjcyMn0.ZqG0Y8zJQSE5SNnNcENL9v0XQzRFz0d23dmtXIM7evQ",
             },
             body: JSON.stringify(note), // body data type must match "Content-Type" header
@@ -72,7 +72,7 @@ const NoteState = (props) => {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
-                "auth-token":
+                auth_token:
                     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI4NDVmOWNkODQzMjRkNGZhYTA2MWZhIn0sImlhdCI6MTY1Mjg0MjcyMn0.ZqG0Y8zJQSE5SNnNcENL9v0XQzRFz0d23dmtXIM7evQ",
             },
         });
