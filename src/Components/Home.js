@@ -1,5 +1,5 @@
 import React from "react";
-import Notes from "./Notes";
+import Notes from "./Note/Notes";
 import NoteState from "../Context/Notes/NoteState";
 
 function Home(props) {

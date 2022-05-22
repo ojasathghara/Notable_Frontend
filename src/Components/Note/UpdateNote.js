@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import PropTypes from "prop-types";
-import NoteContext from "../Context/Notes/NoteContext";
+import NoteContext from "../../Context/Notes/NoteContext";
 
 function UpdateNote(props) {
     let oldTitle = "";
