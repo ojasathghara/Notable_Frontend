@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import NoteContext from "./NoteContext";
 
-const host = "http://localhost:56000/api/note";
+const host = "http://localhost:17778/api/note";
 
 const NoteState = (props) => {
     const [notes, setNotes] = useState([]);
@@ -84,7 +84,6 @@ const NoteState = (props) => {
         setNotes(newNotes);
     };
 
-    getNotes();
     return (
         <NoteContext.Provider
             value={{ notes, getNotes, addNote, deleteNote, updateNote }}
