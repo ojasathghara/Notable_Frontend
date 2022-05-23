@@ -6,11 +6,12 @@ import NoteContext from "../../Context/Notes/NoteContext";
 function UpdateNote(props) {
     let oldTitle = "";
     let oldDescription = "";
-    let oldTag = props.note.tag;
+    let oldTag = "";
 
     if (props.note != null) {
         oldTitle = props.note.title;
         oldDescription = props.note.description;
+        oldTag = props.note.tag;
     }
 
     const [newTitle, setNewTitle] = useState(oldTitle);
@@ -43,7 +44,7 @@ function UpdateNote(props) {
                 onShow={props.onShow}
                 onHide={props.onHide}
             >
-                <Modal.Header>
+                <Modal.Header closeButton>
                     <Modal.Title>Update Task</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -57,6 +58,7 @@ function UpdateNote(props) {
                                 name="noteTitleUpdate"
                                 value={newTitle}
                                 onChange={onTitleChange}
+                                required
                             />
                         </Form.Group>
                         <br />
@@ -72,6 +74,7 @@ function UpdateNote(props) {
                                 name="noteDescriptionUpdate"
                                 value={newDescription}
                                 onChange={onDescriptionChange}
+                                required
                             ></textarea>
                         </Form.Group>
                         <Form.Group>
@@ -98,7 +101,14 @@ function UpdateNote(props) {
                     <Button variant="secondary" onClick={props.onClose}>
                         Cancel
                     </Button>
-                    <Button variant="primary" onClick={editNote}>
+                    <Button
+                        disabled={
+                            (newTitle && newTitle.length === 0) ||
+                            (newDescription && newDescription.length === 0)
+                        }
+                        variant="primary"
+                        onClick={editNote}
+                    >
                         Update
                     </Button>
                 </Modal.Footer>

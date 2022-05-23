@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import NoteContext from "./NoteContext";
 
 const host = "http://localhost:17778/api/note";

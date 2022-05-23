@@ -51,6 +51,7 @@ export default function AddNote({ tags }) {
                         placeholder="Enter title"
                         value={title}
                         onChange={onTitleChange}
+                        required
                     />
                 </Form.Group>
                 <br />
@@ -67,6 +68,7 @@ export default function AddNote({ tags }) {
                         placeholder="Enter a description"
                         value={description}
                         onChange={onDescriptionChange}
+                        required
                     ></textarea>
                 </Form.Group>
                 <br />
@@ -87,7 +89,13 @@ export default function AddNote({ tags }) {
                 </Form.Group>
                 <br />
                 <Form.Group>
-                    <Button variant="primary" onClick={createNote}>
+                    <Button
+                        disabled={
+                            title.length === 0 || description.length === 0
+                        }
+                        variant="primary"
+                        onClick={createNote}
+                    >
                         + Add
                     </Button>
                 </Form.Group>

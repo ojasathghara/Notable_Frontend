@@ -1,7 +1,6 @@
 import React from "react";
 import Notes from "./Note/Notes";
 import NoteState from "../Context/Notes/NoteState";
-import Tags from "./Tag/Tags";
 
 function Home(props) {
     return (
@@ -9,7 +8,9 @@ function Home(props) {
             <NoteState>
                 <Notes />
             </NoteState>
-            <Tags />
+            {/* <TagState>
+                    <Tags />
+                </TagState> */}
         </div>
     );
 }
