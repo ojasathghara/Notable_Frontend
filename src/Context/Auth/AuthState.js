@@ -18,6 +18,13 @@ const AuthState = (props) => {
 
         response = await response.json();
         setAuthToken(response.data.auth_token);
+
+        if (response.data.auth_token) {
+            localStorage.setItem(
+                "notable_auth_token",
+                response.data.auth_token
+            );
+        }
     };
 
     const signup = async (name, email, password) => {
@@ -31,15 +38,18 @@ const AuthState = (props) => {
         });
 
         response = await response.json();
-        setAuthToken(response.data.auth_token);
+        console.log(response);
     };
 
     const logout = () => {
         setAuthToken("");
+        localStorage.setItem("notable_auth_token", "");
     };
 
     return (
-        <AuthContext.Provider value={{ authToken, login, signup, logout }}>
+        <AuthContext.Provider
+            value={{ authToken, setAuthToken, login, signup, logout }}
+        >
             {props.children}
         </AuthContext.Provider>
     );

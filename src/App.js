@@ -11,6 +11,7 @@ import AuthState from "./Context/Auth/AuthState";
 
 function App() {
     let message = "This is a nice alert";
+
     return (
         <div>
             <AuthState>
