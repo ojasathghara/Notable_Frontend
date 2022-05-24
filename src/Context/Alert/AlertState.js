@@ -3,6 +3,7 @@ import AlertContext from "./AlertContext";
 
 const AlertState = (props) => {
     const [alert, setAlert] = useState({});
+    const [hasAlert, setHasAlert] = useState(false);
 
     const createAlert = (type, message) => {
         const newAlert = {
@@ -11,6 +12,12 @@ const AlertState = (props) => {
         };
 
         setAlert(newAlert);
+        hasAlert(true);
+
+        setTimeout(() => {
+            hasAlert(false);
+            setAlert({});
+        }, 2000);
     };
 
     return (
