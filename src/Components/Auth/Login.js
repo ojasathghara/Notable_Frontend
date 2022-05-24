@@ -22,7 +22,7 @@ export default function Login({ showAlert }) {
 
     useEffect(() => {
         if (authToken) {
-            return navigate("/");
+            return navigate("/home");
             // eslint-disable-next-line
         }
     }, [authToken]);

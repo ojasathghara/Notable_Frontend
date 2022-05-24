@@ -9,6 +9,7 @@ import About from "./Components/Static/About";
 import { Alert } from "react-bootstrap";
 import AuthState from "./Context/Auth/AuthState";
 import { useState } from "react";
+import Notable from "./Components/Notable";
 
 function App() {
     const [alert, setAlert] = useState({});
@@ -41,8 +42,9 @@ function App() {
 
                     <div className="container mt-5">
                         <Routes>
+                            <Route path="/" element={<Notable />} />
                             <Route
-                                path="/"
+                                path="/home"
                                 element={<Home showAlert={createAlert} />}
                             />
                             <Route path="/about" element={<About />} />

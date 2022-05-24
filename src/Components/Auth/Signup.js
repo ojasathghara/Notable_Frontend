@@ -14,7 +14,6 @@ export default function Signup({ showAlert }) {
 
     const onSignup = async () => {
         let response = await signup(name, email, password);
-        console.log(response);
 
         if (response.status && response.status === 200) {
             showAlert("success", response.msg + ". Please login");
