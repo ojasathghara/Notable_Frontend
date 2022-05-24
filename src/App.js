@@ -8,23 +8,56 @@ import Logout from "./Components/Auth/Logout";
 import About from "./Components/Static/About";
 import { Alert } from "react-bootstrap";
 import AuthState from "./Context/Auth/AuthState";
+import { useState } from "react";
 
 function App() {
-    let message = "This is a nice alert";
+    const [alert, setAlert] = useState({});
+    const [hasAlert, setHasAlert] = useState(false);
+
+    const createAlert = (type, message) => {
+        const newAlert = {
+            type: type,
+            message: message,
+        };
+
+        setAlert(newAlert);
+        setHasAlert(true);
+
+        setTimeout(() => {
+            setHasAlert(false);
+            setAlert({});
+        }, 3000);
+    };
 
     return (
         <div>
             <AuthState>
                 <Router>
                     <Navigation />
-                    <Alert variant="primary">{message}</Alert>
+
+                    {hasAlert && (
+                        <Alert variant={alert.type}>{alert.message}</Alert>
+                    )}
+
                     <div className="container mt-5">
                         <Routes>
-                            <Route path="/" element={<Home />} />
+                            <Route
+                                path="/"
+                                element={<Home showAlert={createAlert} />}
+                            />
                             <Route path="/about" element={<About />} />
-                            <Route path="/login" element={<Login />} />
-                            <Route path="/signup" element={<Signup />} />
-                            <Route path="/logout" element={<Logout />} />
+                            <Route
+                                path="/login"
+                                element={<Login showAlert={createAlert} />}
+                            />
+                            <Route
+                                path="/signup"
+                                element={<Signup showAlert={createAlert} />}
+                            />
+                            <Route
+                                path="/logout"
+                                element={<Logout showAlert={createAlert} />}
+                            />
                         </Routes>
                     </div>
                 </Router>

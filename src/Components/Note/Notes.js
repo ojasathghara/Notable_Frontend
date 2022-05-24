@@ -4,7 +4,7 @@ import AddNote from "./AddNote";
 import NoteItem from "./NoteItem";
 import UpdateNote from "./UpdateNote";
 
-export default function Notes() {
+export default function Notes(props) {
     const tags = [
         { name: "General", color: "#F4511E" },
         { name: "Commute", color: "#00ACC1" },
@@ -34,7 +34,7 @@ export default function Notes() {
 
     return (
         <div className="my-5">
-            <AddNote tags={tags} />
+            <AddNote tags={tags} showAlert={props.showAlert} />
             <br />
             <UpdateNote
                 key={currentNote._id}
@@ -45,6 +45,7 @@ export default function Notes() {
                 onShow={handleModalShow}
                 onHide={handleModalClose}
                 onClose={handleModalClose}
+                showAlert={props.showAlert}
             />
             <h3>My Notes</h3>
             <hr />
@@ -54,7 +55,11 @@ export default function Notes() {
                         return (
                             // have to give unique key to each item
                             <div className="col-md-4" key={note._id}>
-                                <NoteItem note={note} onEdit={editNote} />
+                                <NoteItem
+                                    note={note}
+                                    onEdit={editNote}
+                                    showAlert={props.showAlert}
+                                />
                             </div>
                         );
                     })

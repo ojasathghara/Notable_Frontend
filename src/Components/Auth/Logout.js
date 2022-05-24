@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import AuthContext from "../../Context/Auth/AuthContext";
+import { Link } from "react-router-dom";
 
 export default function Logout() {
     const { logout } = useContext(AuthContext);
@@ -9,5 +10,11 @@ export default function Logout() {
         // eslint-disable-next-line
     }, []);
 
-    return <div>User logged out!</div>;
+    return (
+        <div>
+            <h3>Logout</h3>
+            <hr />
+            You have been logged out. <Link to="/login">Login</Link>
+        </div>
+    );
 }

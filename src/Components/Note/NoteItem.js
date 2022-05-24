@@ -6,6 +6,11 @@ function NoteItem(props) {
     const noteContext = useContext(NoteContext);
     const { deleteNote } = noteContext;
 
+    const onNoteDelete = (id) => {
+        deleteNote(id);
+        props.showAlert("success", "Note deleted successfully!");
+    };
+
     return (
         <div className="card my-2">
             <div className="card-body">
@@ -23,7 +28,7 @@ function NoteItem(props) {
                     </i>
                     <i
                         className="fa-regular fa-trash-can"
-                        onClick={() => deleteNote(props.note._id)}
+                        onClick={() => onNoteDelete(props.note._id)}
                     >
                         {" "}
                         Delete

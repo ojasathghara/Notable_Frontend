@@ -3,15 +3,21 @@ import { Form, Button } from "react-bootstrap";
 import AuthContext from "../../Context/Auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function Login({ showAlert }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { login, authToken } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
-    const onLogin = () => {
-        login(email, password);
+    const onLogin = async () => {
+        let response = await login(email, password);
+
+        if (response.status && response.status === 200) {
+            showAlert("success", response.msg);
+        } else {
+            showAlert("danger", response.errors[0].msg);
+        }
     };
 
     useEffect(() => {
@@ -23,6 +29,8 @@ export default function Login() {
 
     return (
         <div>
+            <h3>Login</h3>
+            <hr />
             <Form>
                 <Form.Group className="mb-3" controlId="email">
                     <Form.Label>Email</Form.Label>

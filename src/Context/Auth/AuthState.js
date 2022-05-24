@@ -17,14 +17,16 @@ const AuthState = (props) => {
         });
 
         response = await response.json();
-        setAuthToken(response.data.auth_token);
 
-        if (response.data.auth_token) {
+        if (response.data && response.data.auth_token) {
+            setAuthToken(response.data.auth_token);
             localStorage.setItem(
                 "notable_auth_token",
                 response.data.auth_token
             );
         }
+
+        return response;
     };
 
     const signup = async (name, email, password) => {
@@ -38,7 +40,7 @@ const AuthState = (props) => {
         });
 
         response = await response.json();
-        console.log(response);
+        return response;
     };
 
     const logout = () => {

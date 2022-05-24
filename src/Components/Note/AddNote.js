@@ -3,7 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import PropTypes from "prop-types";
 import NoteContext from "../../Context/Notes/NoteContext";
 
-export default function AddNote({ tags }) {
+export default function AddNote({ tags, showAlert }) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [tag, setTag] = useState("General");
@@ -34,6 +34,7 @@ export default function AddNote({ tags }) {
         addNote(note);
         setTitle("");
         setDescription("");
+        showAlert("success", "Note added successfully!");
     };
 
     return (

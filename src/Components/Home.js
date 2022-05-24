@@ -19,7 +19,7 @@ function Home(props) {
     return (
         <div>
             <NoteState>
-                <Notes />
+                <Notes showAlert={props.showAlert} />
             </NoteState>
             {/* <TagState>
                     <Tags />

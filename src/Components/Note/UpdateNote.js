@@ -34,6 +34,7 @@ function UpdateNote(props) {
 
     const editNote = () => {
         updateNote(props.note._id, newTitle, newDescription, newTag);
+        props.showAlert("success", "Note updated successfully!");
         props.onHide();
     };
 
